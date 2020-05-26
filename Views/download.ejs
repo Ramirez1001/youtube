@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Downloader</title>
+    <link rel="stylesheet" href="Css/download.css">
+</head>
+<body>
+    <% if(info){ %>
+        <div class="content-wrapper">
+            <h1>Video Name: <%= info.title %></h1>
+            <a href="<%= info.channel_url %>">Channel url</a>
+            <a href="/">Back to index</a>
+            <img src="<%= info.thumbnail %>">
+            <video src="<%= info.url %>" controls></video>
+            <div class="download-links">
+                <a href="<%= info.url %>" download>Download Video</a>
+                <a href="<%= info.thumbnail %>" download>Download Thumbnail</a>
+            </div>
+            <div class="info-content">
+                <h3>Video Duration: <%= info._duration_hms %></h3>
+                <h3>Likes: <%= info.like_count%></h3>
+                <h3>Dislikes: <%= info.dislike_count %></h3>
+            </div>
+            <div class="tags-content">
+                <h1>Video Tags</h1>
+                <% info.tags.forEach(function(tag){ %>
+                    <p><%= tag %></p>
+                <% }) %>
+            </div>
+            <div class="description-container">
+                <h1>Video Description: </h1>
+                <p><%= info.description %></p>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>
